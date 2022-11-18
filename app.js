@@ -39,7 +39,7 @@ app.get("/allCustomers", (req, res) => {
 });
 
 app.get("/customer/id", (req, res) => {
-    Customer.findById(req.body)
+    Customer.findById(req.query.id)
         .then(data => {
             const response = !!data ? data : 'No data with specified id found'
             res.status(200).send(response);
@@ -50,7 +50,7 @@ app.get("/customer/id", (req, res) => {
 });
 
 app.delete("/customer/id", (req, res) => {
-    Customer.findByIdAndDelete(req.body)
+    Customer.findByIdAndDelete(req.query.id)
         .then(result => {
             const response = !!result ? result : 'No data with specified id found'
             res.status(200).send(response);
